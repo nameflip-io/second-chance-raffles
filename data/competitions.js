@@ -46,7 +46,7 @@
       title: "VW Golf R",
       category: "cars",
       prizeValue: 44995,
-      ticketPrice: 4.99,
+      ticketPrice: 2.5,
       maxTickets: 12999,
       ticketsSold: 7843,
       endsAt: inDays(9, 20),

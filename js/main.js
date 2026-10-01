@@ -447,17 +447,60 @@
     if (all) { all.click(); all.focus(); }
   });
 
+  /* ---------- Home hero: headline prize ---------- */
+
+  /** Fills the hero from the competition named in data-hero-comp (falls back
+      to the first featured one), so price, countdown and odds stay real. */
+  function initHeroComp() {
+    var hero = document.querySelector("[data-hero-comp]");
+    if (!hero) return;
+    var comp = findCompetition(hero.getAttribute("data-hero-comp")) ||
+      COMPETITIONS.filter(function (c) { return c.featured; })[0];
+    if (!comp) return;
+    var t = countdown(comp.endsAt);
+    var pct = soldPercent(comp);
+    function set(sel, fn) { var el = hero.querySelector(sel); if (el) fn(el); }
+
+    set("[data-hero-title]", function (el) { el.textContent = comp.title; });
+    set("[data-hero-price]", function (el) { el.textContent = formatMoney(comp.ticketPrice); });
+    set("[data-hero-countdown]", function (el) { el.innerHTML = countdownBoxes(comp.endsAt); });
+    set("[data-hero-progress]", function (el) {
+      el.innerHTML =
+        '<div class="progress" role="progressbar" aria-label="Tickets sold" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '">' +
+          '<div class="progress__bar" style="--value:' + pct + '%"></div>' +
+        "</div>" +
+        '<p class="progress-meta"><span><strong>' + number.format(comp.ticketsSold) + "</strong> / " + number.format(comp.maxTickets) + " sold</span>" +
+        "<span>" + odds(comp) + "</span></p>";
+    });
+    set("[data-hero-enter]", function (el) {
+      el.href = compUrl(comp);
+      if (t.ended) el.firstChild.textContent = "View draw ";
+    });
+    set("[data-hero-free]", function (el) { el.href = "free-entry.html?comp=" + encodeURIComponent(comp.id); });
+    set("[data-hero-serial]", function (el) { el.textContent = "No. " + (comp.serial || ""); });
+    set("[data-hero-status]", function (el) {
+      var b = badgesFor(comp)[0];
+      el.className = "badge badge--" + b.cls + " hero__badge";
+      el.textContent = b.label;
+    });
+    if (comp.image) {
+      set(".hero__placeholder", function (el) {
+        el.outerHTML = '<img class="hero__img" src="' + escapeHtml(comp.image) + '" alt="' + escapeHtml(comp.title) + '" width="1200" height="900" fetchpriority="high">';
+      });
+    }
+  }
+
   /* ---------- Home: category rows + sticky sub-nav ---------- */
 
-  var ROW_WINDOW_MS = 72 * 3600 * 1000;
+  var ROW_WINDOW_MS = 7 * 24 * 3600 * 1000; // "Ending Soon" = closes within 7 days
   var ROWS = {
     ending: function (c) { var t = countdown(c.endsAt); return !t.ended && t.total < ROW_WINDOW_MS; },
     instant: function (c) { return !countdown(c.endsAt).ended && c.instantWins && c.instantWins.length > 0; },
     all: function (c) { return !countdown(c.endsAt).ended; }
   };
 
-  /** Fills each [data-comp-row="ending|instant|all"] with ticket cards, soonest
-      to close first. Empty rows hide their section and sub-nav link. */
+  /** Fills each [data-comp-row="ending|instant|all"] with ticket cards (scroll
+      rows for ending/instant, a grid for all), soonest to close first. Empty rows hide their section and sub-nav link. */
   function renderCompRows() {
     document.querySelectorAll("[data-comp-row]").forEach(function (row) {
       var kind = row.getAttribute("data-comp-row");
@@ -474,7 +517,7 @@
         return;
       }
       row.innerHTML = list.map(renderTicketCard).join("");
-      initRowNav(row);
+      if (row.classList.contains("card-row")) initRowNav(row);
     });
   }
 
@@ -929,25 +972,23 @@
 
     var title = hero.querySelector(".hero__title");
     var words = title ? splitWords(title) : [];
-    var copy = hero.querySelectorAll(".hero__sub, .hero__ctas, .trust");
-    var art = hero.querySelector(".hero__art");
+    var copy = hero.querySelectorAll(".hero__sub, .hero__price, .hero__timer, .hero__progress, .hero__ctas, .hero__small");
+    var art = hero.querySelector(".hero__media");
 
     gsap.set(words, { autoAlpha: 0, yPercent: 60, rotate: 2 });
     gsap.set(copy, { autoAlpha: 0, y: 16 });
-    if (art) gsap.set(art, { autoAlpha: 0, scale: 0.94 });
+    if (art) gsap.set(art, { autoAlpha: 0, scale: 0.96 });
     root.classList.remove("hero-pending");
 
     gsap.timeline({ defaults: { ease: "power3.out" } })
       .to(words, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: 0.9, stagger: 0.055 }, 0.15)
-      .to(art, { autoAlpha: 1, scale: 1, duration: 1.2 }, 0.3)
-      .to(hero.querySelectorAll(".hero__sub, .hero__ctas, .trust"), { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.55);
+      .to(art, { autoAlpha: 1, scale: 1, duration: 1.2 }, 0.25)
+      .to(copy, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.07 }, 0.45);
 
-    // Mask: slow float, plus a little parallax on the whole art block.
-    var mask = hero.querySelector(".hero__mask");
-    if (mask) gsap.to(mask, { y: -14, duration: 3.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    // A little parallax on the prize image as the hero scrolls away.
     if (art) {
       gsap.to(art, {
-        yPercent: 14, ease: "none",
+        yPercent: 6, ease: "none",
         scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true }
       });
     }
@@ -1125,6 +1166,7 @@
       slot.innerHTML = featured.map(renderFeatured).join("");
       initBundles(slot);
     });
+    initHeroComp();
     renderCompRows();
     initSubnav();
     document.querySelectorAll("[data-winners-ticker]").forEach(renderWinnersTicker);

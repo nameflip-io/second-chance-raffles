@@ -55,39 +55,35 @@
   </div>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
+    <!-- HERO: the headline prize.
+         Price, countdown, sold count, odds, links and image come from the
+         competition named in data-hero-comp (data/competitions.js). The text
+         below is the no-JS fallback; edit the subtitle here. -->
+    <section class="hero theme-dark" aria-labelledby="hero-title" data-hero-comp="vw-golf-r">
       <div class="hero__fx" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
-          <h1 id="hero-title" class="hero__title">Real prizes. Real odds.<br> A <span class="text-metal">second chance</span> every time.</h1>
-          <p class="hero__sub">Low-cost tickets, capped entries and live-streamed draws. Lose? Your ticket rolls into our monthly Second Chance draw.</p>
-          <div class="hero__ctas">
-            <a class="btn btn--gold btn--lg" href="competitions.html">View live competitions</a>
-            <a class="btn btn--outline btn--lg" href="how-it-works.html">How it works</a>
+          <h1 id="hero-title" class="hero__title" data-hero-title>VW Golf R</h1>
+          <p class="hero__sub">Drive away in this stunning Golf R: 333PS, all-wheel drive and 0–62 in 4.6 seconds. Or take £39,000 tax-free cash.</p>
+          <p class="hero__price"><span class="hero__price-value" data-hero-price>£2.50</span><span class="hero__price-unit">per ticket</span></p>
+          <div class="hero__timer" data-hero-countdown></div>
+          <div class="hero__progress" data-hero-progress>
+            <p class="progress-meta"><span><strong>7,843</strong> / 12,999 sold</span><span>Odds 1 in 12,999</span></p>
           </div>
-          <ul class="trust" role="list">
-            <li class="trust__chip">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.5" fill="currentColor"/><path d="M5 5a7 7 0 0 0 0 10M15 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              Live-streamed draws
-            </li>
-            <li class="trust__chip">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4.5 10.5 3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Guaranteed winners
-            </li>
-            <li class="trust__chip">
-              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m3.5 6 6.5 5 6.5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-              Free postal entry
-            </li>
-          </ul>
+          <div class="hero__ctas">
+            <a class="btn btn--gold btn--lg hero__enter" href="competition.html?id=vw-golf-r" data-hero-enter>Enter now <span aria-hidden="true">→</span></a>
+            <a class="btn btn--outline btn--lg" href="free-entry.html?comp=vw-golf-r" data-hero-free>Free postal entry</a>
+          </div>
+          <p class="hero__small"><span class="chip-18 chip-18--sm" aria-hidden="true">18+</span><span>18+ · Draw streamed live on Instagram · Losing tickets go into our monthly Second Chance draw</span></p>
         </div>
 
-        <div class="hero__art" aria-hidden="true">
-          <div class="hero__glow"></div>
-          <img class="hero__mask" src="assets/logo-mark.jpeg" alt="" width="590" height="560" fetchpriority="high">
-          <div class="stub stub--1"><span>Admit one</span><strong>SCR-0042</strong></div>
-          <div class="stub stub--2"><span>2nd chance</span><strong>Monthly draw</strong></div>
-          <div class="stub stub--3"><span>Odds</span><strong>1 in 1,999</strong></div>
+        <div class="hero__media" data-hero-media>
+          <div class="placeholder hero__placeholder" role="img" aria-label="Prize image placeholder">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 30v-5l4-2 5-7h16l6 7 5 1.5V30"/><path d="M6 30h4m10 0h8m10 0h4"/><circle cx="15" cy="31" r="4"/><circle cx="33" cy="31" r="4"/><path d="M16 23h20"/></svg>
+            <span class="placeholder__label">Prize image</span>
+          </div>
+          <span class="badge badge--live hero__badge" data-hero-status>Live</span>
+          <span class="hero__serial" data-hero-serial>No. SCR-0042</span>
         </div>
       </div>
     </section>
@@ -103,12 +99,12 @@
     <!-- COMPETITIONS: sticky sub-nav + one section per category.
          Rows are rendered from data/competitions.js by js/main.js. -->
     <div class="comp-zone">
-      <nav class="subnav" aria-label="Competition sections" data-subnav>
+      <nav class="subnav theme-dark" aria-label="Competition sections" data-subnav>
         <div class="container subnav__inner">
           <a class="subnav__link" href="#featured" data-subnav-link="featured">Featured</a>
           <a class="subnav__link" href="#ending-soon" data-subnav-link="ending-soon">Ending Soon <span class="subnav__count" data-row-count="ending"></span></a>
           <a class="subnav__link" href="#instant-wins" data-subnav-link="instant-wins">Instant Wins <span class="subnav__count" data-row-count="instant"></span></a>
-          <a class="subnav__link" href="#all-competitions" data-subnav-link="all-competitions">All <span class="subnav__count" data-row-count="all"></span></a>
+          <a class="subnav__link" href="#all-competitions" data-subnav-link="all-competitions">All Competitions <span class="subnav__count" data-row-count="all"></span></a>
         </div>
       </nav>
 
@@ -131,7 +127,7 @@
           <header class="row-head">
             <div class="row-head__text">
               <h2 id="ending-soon-title" class="section-title">Ending Soon</h2>
-              <p class="row-head__sub">Draws closing in the next 72 hours. Last chance to get in.</p>
+              <p class="row-head__sub">Draws closing in the next 7 days. Last chance to get in.</p>
             </div>
             <div class="row-nav" data-row-nav hidden>
               <button type="button" class="row-nav__btn" data-row-prev aria-label="Scroll ending soon competitions back">
@@ -177,16 +173,8 @@
               <h2 id="all-competitions-title" class="section-title">All Competitions</h2>
               <p class="row-head__sub">Every live draw, soonest to close first.</p>
             </div>
-            <div class="row-nav" data-row-nav hidden>
-              <button type="button" class="row-nav__btn" data-row-prev aria-label="Scroll all competitions back">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-              <button type="button" class="row-nav__btn" data-row-next aria-label="Scroll all competitions forward">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-            </div>
           </header>
-          <div class="card-row" data-comp-row="all" role="region" aria-label="All Competitions" tabindex="0">
+          <div class="grid-cards grid-cards--4" data-comp-row="all">
             <noscript><p>See every competition on the <a href="competitions.html">competitions page</a>.</p></noscript>
           </div>
           <div class="section-foot">

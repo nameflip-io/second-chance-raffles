@@ -129,29 +129,20 @@ Keep files small: under about 300 KB each, JPG for photos, PNG only where you ne
 |---|---|---|---|
 | **Prize photos** | **1200 × 900 px** (landscape, 4:3) | `assets/prizes/` e.g. `ps5-pro-1.jpg` | Set `image:` (main photo) and `gallery:` (up to 3 more) for that competition in `data/competitions.js`. |
 | **Winner photos** | **400 × 400 px** (square, face centred) | `assets/winners/` e.g. `jamie-r.jpg` | Add `photo:` to that winner in `data/competitions.js`. |
-| **Hero mascot mask** | **1200 px wide, transparent PNG** | `assets/mask.png` | See the steps below. |
+| **Home page hero prize** | **1200 × 900 px** (same as prize photos) | `assets/prizes/` | It uses the main `image` of the hero competition (see below). |
 | **Logo (optional upgrade)** | Transparent PNG, mark about 600 px, full logo about 800 px | `assets/logo-mark.png`, `assets/logo-lockup.png` | Ask your developer to swap the file names in `js/main.js`. |
 | **Social share image** | 1200 × 630 px | `assets/og-image.jpg` | Replace the file and keep the same name. |
 | **Favicon** | 32 × 32 px and 180 × 180 px PNG | `assets/favicon-32.png`, `assets/apple-touch-icon.png` | Replace the files and keep the same names. |
 
 Name files in lowercase with hyphens and no spaces: `vw-golf-r-1.jpg`, not `VW Golf R (1).JPG`.
 
-### Hero mascot
+### Home page hero
 
-The home page hero currently uses a crop of your logo. When you have a transparent PNG of the mask:
+The big hero at the top of the home page shows one headline prize. Its price, countdown, tickets sold, odds, buttons and image all come from that competition in `data/competitions.js`.
 
-1. Save it as `assets/mask.png`.
-2. In `index.html`, find this line:
-
-   ```html
-   <img class="hero__mask" src="assets/logo-mark.jpeg" alt="" width="590" height="560" fetchpriority="high">
-   ```
-
-3. Change it to the line below. Set `width` and `height` to your image's real size.
-
-   ```html
-   <img class="hero__mask hero__mask--cutout" src="assets/mask.png" alt="" width="1200" height="1140" fetchpriority="high">
-   ```
+- **To change which prize is shown:** in `index.html`, find `data-hero-comp="vw-golf-r"` and change it to another competition's `id`.
+- **The prize photo** is that competition's `image`. Until it has one, the grey "Prize image" box shows.
+- **The line under the prize name** ("Drive away in this stunning Golf R…") is plain text in `index.html`, just below the `data-hero-comp` line. Update it when you change the prize.
 
 ### Live draw replays
 
