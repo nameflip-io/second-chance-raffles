@@ -447,6 +447,122 @@
     if (all) { all.click(); all.focus(); }
   });
 
+  /* ---------- Home: category rows + sticky sub-nav ---------- */
+
+  var ROW_WINDOW_MS = 72 * 3600 * 1000;
+  var ROWS = {
+    ending: function (c) { var t = countdown(c.endsAt); return !t.ended && t.total < ROW_WINDOW_MS; },
+    instant: function (c) { return !countdown(c.endsAt).ended && c.instantWins && c.instantWins.length > 0; },
+    all: function (c) { return !countdown(c.endsAt).ended; }
+  };
+
+  /** Fills each [data-comp-row="ending|instant|all"] with ticket cards, soonest
+      to close first. Empty rows hide their section and sub-nav link. */
+  function renderCompRows() {
+    document.querySelectorAll("[data-comp-row]").forEach(function (row) {
+      var kind = row.getAttribute("data-comp-row");
+      var list = COMPETITIONS.filter(ROWS[kind] || ROWS.all)
+        .sort(function (a, b) { return new Date(a.endsAt) - new Date(b.endsAt); });
+      var section = row.closest("[data-row-section]");
+      document.querySelectorAll('[data-row-count="' + kind + '"]').forEach(function (el) { el.textContent = list.length; });
+      if (!list.length) {
+        if (section) {
+          section.hidden = true;
+          var link = document.querySelector('[data-subnav-link="' + section.id + '"]');
+          if (link) link.hidden = true;
+        }
+        return;
+      }
+      row.innerHTML = list.map(renderTicketCard).join("");
+      initRowNav(row);
+    });
+  }
+
+  /** Prev/next arrows for a horizontal row; shown only when the row overflows. */
+  function initRowNav(row) {
+    var section = row.closest("[data-row-section]");
+    var nav = section && section.querySelector("[data-row-nav]");
+    if (!nav) return;
+    var prev = nav.querySelector("[data-row-prev]");
+    var next = nav.querySelector("[data-row-next]");
+    function sync() {
+      var overflow = row.scrollWidth > row.clientWidth + 4;
+      nav.hidden = !overflow;
+      prev.disabled = row.scrollLeft <= 4;
+      next.disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+    }
+    function step(dir) {
+      var card = row.querySelector(".ticket");
+      var gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      var by = card ? (card.getBoundingClientRect().width + gap) * Math.max(1, Math.floor(row.clientWidth / card.getBoundingClientRect().width)) : row.clientWidth;
+      row.scrollBy({ left: dir * by, behavior: REDUCED_MOTION ? "auto" : "smooth" });
+    }
+    prev.addEventListener("click", function () { step(-1); });
+    next.addEventListener("click", function () { step(1); });
+    row.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    sync();
+  }
+
+  /** Sticky sub-nav: smooth jump to each section and gold highlight on the
+      section currently in view (IntersectionObserver). */
+  function initSubnav() {
+    var nav = document.querySelector("[data-subnav]");
+    if (!nav) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll("[data-subnav-link]"));
+    var sections = links.map(function (l) { return document.getElementById(l.getAttribute("data-subnav-link")); })
+      .filter(function (sec) { return sec && !sec.hidden; });
+
+    function offset() {
+      var header = document.querySelector(".site-header");
+      return (header ? header.getBoundingClientRect().height : 0) + nav.getBoundingClientRect().height;
+    }
+    function setActive(id) {
+      links.forEach(function (l) {
+        var on = l.getAttribute("data-subnav-link") === id;
+        l.classList.toggle("is-active", on);
+        if (on) l.setAttribute("aria-current", "true"); else l.removeAttribute("aria-current");
+      });
+      var active = nav.querySelector(".is-active");
+      var inner = nav.querySelector(".subnav__inner");
+      // keep the active link visible when the bar scrolls sideways on phones
+      if (active && inner.scrollWidth > inner.clientWidth) {
+        inner.scrollTo({ left: active.offsetLeft - 24, behavior: REDUCED_MOTION ? "auto" : "smooth" });
+      }
+    }
+
+    links.forEach(function (l) {
+      l.addEventListener("click", function (e) {
+        var target = document.getElementById(l.getAttribute("data-subnav-link"));
+        if (!target) return;
+        e.preventDefault();
+        var lenis = window.SCR.lenis;
+        if (lenis) lenis.scrollTo(target, { offset: -offset() + 1 });
+        else window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset() + 1, behavior: REDUCED_MOTION ? "auto" : "smooth" });
+        history.replaceState(null, "", "#" + target.id);
+        setActive(target.id);
+      });
+    });
+
+    if (!("IntersectionObserver" in window)) return;
+    var visible = {};
+    var io;
+    function observe() {
+      if (io) io.disconnect();
+      // a band from just under the sticky bars to the middle of the screen
+      io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+        var current = null;
+        sections.forEach(function (sec) { if (visible[sec.id]) current = current || sec.id; });
+        if (current) setActive(current);
+        else if (window.scrollY + offset() < sections[0].getBoundingClientRect().top + window.scrollY) setActive(null);
+      }, { rootMargin: -Math.round(offset()) + "px 0px -50% 0px", threshold: 0 });
+      sections.forEach(function (sec) { io.observe(sec); });
+    }
+    observe();
+    window.addEventListener("resize", function () { clearTimeout(observe.t); observe.t = setTimeout(observe, 200); });
+  }
+
   /* ---------- Winners ticker ---------- */
 
   var STAR = '<svg class="ticker__star" viewBox="0 0 12 12" aria-hidden="true"><path fill="currentColor" d="M6 0 7.4 4.6 12 6 7.4 7.4 6 12 4.6 7.4 0 6 4.6 4.6Z"/></svg>';
@@ -1003,11 +1119,14 @@
     });
 
     document.querySelectorAll('[data-render="featured"]').forEach(function (slot) {
-      var comp = COMPETITIONS.filter(function (c) { return c.featured; })[0];
-      if (!comp) return;
-      slot.innerHTML = renderFeatured(comp);
+      // up to two featured competitions, stacked full width
+      var featured = COMPETITIONS.filter(function (c) { return c.featured && !countdown(c.endsAt).ended; }).slice(0, 2);
+      if (!featured.length) return;
+      slot.innerHTML = featured.map(renderFeatured).join("");
       initBundles(slot);
     });
+    renderCompRows();
+    initSubnav();
     document.querySelectorAll("[data-winners-ticker]").forEach(renderWinnersTicker);
     document.querySelectorAll('[data-render="winners"]').forEach(function (list) {
       var limit = parseInt(list.getAttribute("data-limit"), 10) || undefined;

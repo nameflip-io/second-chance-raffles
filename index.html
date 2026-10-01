@@ -100,43 +100,101 @@
       </div>
     </section>
 
-    <!-- FEATURED COMPETITION (rendered from the featured entry in data/competitions.js) -->
-    <section class="section featured" aria-labelledby="featured-title">
-      <div class="container">
-        <h2 id="featured-title" class="sr-only">Featured competition</h2>
-        <div data-render="featured">
-          <noscript><p>See this week's featured prize on the <a href="competitions.html">competitions page</a>.</p></noscript>
+    <!-- COMPETITIONS: sticky sub-nav + one section per category.
+         Rows are rendered from data/competitions.js by js/main.js. -->
+    <div class="comp-zone">
+      <nav class="subnav" aria-label="Competition sections" data-subnav>
+        <div class="container subnav__inner">
+          <a class="subnav__link" href="#featured" data-subnav-link="featured">Featured</a>
+          <a class="subnav__link" href="#ending-soon" data-subnav-link="ending-soon">Ending Soon <span class="subnav__count" data-row-count="ending"></span></a>
+          <a class="subnav__link" href="#instant-wins" data-subnav-link="instant-wins">Instant Wins <span class="subnav__count" data-row-count="instant"></span></a>
+          <a class="subnav__link" href="#all-competitions" data-subnav-link="all-competitions">All <span class="subnav__count" data-row-count="all"></span></a>
         </div>
-      </div>
-    </section>
+      </nav>
 
-    <!-- LIVE COMPETITIONS -->
-    <section class="section section--tight-top" aria-labelledby="live-title">
-      <div class="container">
-        <header class="section-head section-head--row">
-          <div>
-            <h2 id="live-title" class="section-title">Live competitions</h2>
+      <section class="comp-section" id="featured" aria-labelledby="featured-title">
+        <div class="container">
+          <header class="row-head">
+            <div class="row-head__text">
+              <h2 id="featured-title" class="section-title">Featured Competitions</h2>
+              <p class="row-head__sub">This week’s headline prizes.</p>
+            </div>
+          </header>
+          <div class="featured-stack" data-render="featured">
+            <noscript><p>See this week’s featured prize on the <a href="competitions.html">competitions page</a>.</p></noscript>
           </div>
-          <div class="filters" role="group" aria-label="Filter competitions" data-filter-group="live-grid" hidden>
-            <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="filter-chip" data-filter="ending" aria-pressed="false">Ending soon</button>
-            <button type="button" class="filter-chip" data-filter="tech" aria-pressed="false">Tech</button>
-            <button type="button" class="filter-chip" data-filter="cars" aria-pressed="false">Cars</button>
-            <button type="button" class="filter-chip" data-filter="cash" aria-pressed="false">Cash</button>
-            <button type="button" class="filter-chip" data-filter="instant" aria-pressed="false">Instant wins</button>
+        </div>
+      </section>
+
+      <section class="comp-section" id="ending-soon" aria-labelledby="ending-soon-title" data-row-section="ending">
+        <div class="container">
+          <header class="row-head">
+            <div class="row-head__text">
+              <h2 id="ending-soon-title" class="section-title">Ending Soon</h2>
+              <p class="row-head__sub">Draws closing in the next 72 hours. Last chance to get in.</p>
+            </div>
+            <div class="row-nav" data-row-nav hidden>
+              <button type="button" class="row-nav__btn" data-row-prev aria-label="Scroll ending soon competitions back">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="row-nav__btn" data-row-next aria-label="Scroll ending soon competitions forward">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </header>
+          <div class="card-row" data-comp-row="ending" role="region" aria-label="Ending Soon" tabindex="0">
+            <noscript><p>See every competition on the <a href="competitions.html">competitions page</a>.</p></noscript>
           </div>
-        </header>
-
-        <div class="grid-cards grid-cards--4" id="live-grid" data-render="ticket-cards">
-          <noscript><p>Browse every live prize on the <a href="competitions.html">competitions page</a>.</p></noscript>
         </div>
-        <p class="filters-empty" data-filter-empty="live-grid" hidden>Nothing matches that filter right now. <button type="button" class="link-arrow" data-filter-reset="live-grid">Show all competitions</button></p>
+      </section>
 
-        <div class="section-foot">
-          <a class="btn btn--outline btn--lg" href="competitions.html">View all competitions</a>
+      <section class="comp-section" id="instant-wins" aria-labelledby="instant-wins-title" data-row-section="instant">
+        <div class="container">
+          <header class="row-head">
+            <div class="row-head__text">
+              <h2 id="instant-wins-title" class="section-title">Instant Wins</h2>
+              <p class="row-head__sub">Match a winning ticket number and the prize is yours on the spot.</p>
+            </div>
+            <div class="row-nav" data-row-nav hidden>
+              <button type="button" class="row-nav__btn" data-row-prev aria-label="Scroll instant win competitions back">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="row-nav__btn" data-row-next aria-label="Scroll instant win competitions forward">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </header>
+          <div class="card-row" data-comp-row="instant" role="region" aria-label="Instant Wins" tabindex="0">
+            <noscript><p>See every competition on the <a href="competitions.html">competitions page</a>.</p></noscript>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="comp-section" id="all-competitions" aria-labelledby="all-competitions-title" data-row-section="all">
+        <div class="container">
+          <header class="row-head">
+            <div class="row-head__text">
+              <h2 id="all-competitions-title" class="section-title">All Competitions</h2>
+              <p class="row-head__sub">Every live draw, soonest to close first.</p>
+            </div>
+            <div class="row-nav" data-row-nav hidden>
+              <button type="button" class="row-nav__btn" data-row-prev aria-label="Scroll all competitions back">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="row-nav__btn" data-row-next aria-label="Scroll all competitions forward">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </header>
+          <div class="card-row" data-comp-row="all" role="region" aria-label="All Competitions" tabindex="0">
+            <noscript><p>See every competition on the <a href="competitions.html">competitions page</a>.</p></noscript>
+          </div>
+          <div class="section-foot">
+            <a class="btn btn--outline btn--lg" href="competitions.html">View all competitions</a>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- THE SECOND CHANCE (brand story) -->
     <section class="section second-chance" aria-labelledby="sc-title">

@@ -98,7 +98,7 @@
       ticketPrice: 0.99,
       maxTickets: 2499,
       ticketsSold: 2161,
-      endsAt: inDays(3, 20),
+      endsAt: inDays(2, 20),
       instantWins: [],
       cashAlternative: 950,
       description: "256GB, any colour you like, unlocked to any network. Pick your phone or pocket £950 in cash.",
