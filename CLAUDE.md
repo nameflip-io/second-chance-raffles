@@ -36,21 +36,25 @@ Marketing + demo website for **Second Chance Raffles**, a UK-style online prize 
   - "Same people. More chances."
   - "Raffles · Community · Bigger opportunities · 2nd chance"
 - Brand promise: **every losing ticket goes into a monthly Second Chance draw.**
-- Look: "night-time casino poster", not a cheap lottery site. Deep black, metallic gold, huge condensed uppercase headlines, lots of space.
-- Colour tokens:
+- Look: clean white pages with metallic gold accents and black contrast bands (footer, stats band). Huge condensed uppercase headlines, lots of space. Not a cheap lottery site.
+- Colour tokens (light theme):
 
   ```css
-  --bg:        #0A0908;
-  --surface:   #15130F;
-  --surface-2: #1E1B15;
-  --gold:      #F5B400;
+  --bg:        #FFFFFF;
+  --surface:   #F7F4EE;
+  --surface-2: #EFEAE0;
+  --text:      #0A0908;
+  --muted:     #645D4F;
+  --ink:       #0A0908;  /* brand black for dark bands and chips */
+  --gold:      #F5B400;  /* accents: fills, borders, buttons, bars */
   --gold-light:#FFD75A;
   --gold-dark: #C98A00;
-  --text:      #F4EEDF;
-  --muted:     #A39B87;
-  --live:      #2FD17A;
+  --gold-ink:  #8A6100;  /* gold for TEXT on white (bright gold fails contrast) */
+  --live:      #2FD17A;  /* dot only; text uses --live-ink #0F7A43 */
   ```
 
+- Never put bright gold (#F5B400) as text on white; use `--gold-ink`, or `--metal-text` for gradient headline text.
+- Dark bands use the `.theme-dark` class, which restores the original black palette for everything inside.
 - Signature detail: competition cards look like real tickets — perforated edge, notched corners, serial number like `SCR-0042`.
 
 ## Rules

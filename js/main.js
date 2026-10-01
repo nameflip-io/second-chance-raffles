@@ -549,7 +549,7 @@
   function footerHTML() {
     var year = new Date().getFullYear();
     return (
-      '<footer class="site-footer">' +
+      '<footer class="site-footer theme-dark">' +
         '<div class="container">' +
           '<div class="footer__top">' +
             '<div class="footer__brand">' +
