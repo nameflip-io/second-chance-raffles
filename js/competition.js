@@ -261,7 +261,7 @@
     if (!picks.length) return "";
     return (
       '<section class="related" aria-labelledby="related-title">' +
-        '<header class="section-head"><p class="eyebrow">Keep playing</p><h2 id="related-title" class="section-title">You might also like</h2></header>' +
+        '<header class="section-head"><h2 id="related-title" class="section-title">You might also like</h2></header>' +
         '<div class="grid-cards">' + picks.map(SCR.renderTicketCard).join("") + "</div>" +
       "</section>"
     );

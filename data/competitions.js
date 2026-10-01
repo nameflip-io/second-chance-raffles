@@ -233,7 +233,8 @@
   /*
    * Recent winners (EXAMPLE DATA - client replaces). Newest first.
    * Fields: name (first name + initial), town, prize, date (YYYY-MM-DD),
-   *         drawUrl (link to the recorded live draw; "#" until the client adds it)
+   *         drawUrl (link to the recorded live draw; "#" until the client adds it),
+   *         photo (optional, e.g. "assets/winners/jamie-r.jpg", 400×400)
    */
   window.SCR_WINNERS = [
     { name: "Dan W.", town: "Cardiff", prize: "£250 Second Chance draw", drawUrl: "#", date: "2026-09-30" },

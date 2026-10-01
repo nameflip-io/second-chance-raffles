@@ -477,7 +477,9 @@
   function renderWinnerCard(w) {
     return (
       '<li class="winner" data-month="' + escapeHtml(w.date.slice(0, 7)) + '">' +
-        '<span class="winner__photo" role="img" aria-label="Winner photo placeholder">' + escapeHtml(initials(w.name)) + "</span>" +
+        (w.photo
+          ? '<span class="winner__photo"><img src="' + escapeHtml(w.photo) + '" alt="Photo of ' + escapeHtml(w.name) + '" width="400" height="400" loading="lazy"></span>'
+          : '<span class="winner__photo" role="img" aria-label="Winner photo placeholder">' + escapeHtml(initials(w.name)) + "</span>") +
         '<div class="winner__body">' +
           '<p class="winner__who"><strong>' + escapeHtml(w.name) + "</strong> " + escapeHtml(w.town) + "</p>" +
           '<p class="winner__prize">' + escapeHtml(w.prize) + "</p>" +
@@ -811,7 +813,7 @@
 
     var title = hero.querySelector(".hero__title");
     var words = title ? splitWords(title) : [];
-    var copy = hero.querySelectorAll(".hero__eyebrow, .hero__sub, .hero__ctas, .trust");
+    var copy = hero.querySelectorAll(".hero__sub, .hero__ctas, .trust");
     var art = hero.querySelector(".hero__art");
 
     gsap.set(words, { autoAlpha: 0, yPercent: 60, rotate: 2 });
@@ -820,7 +822,6 @@
     root.classList.remove("hero-pending");
 
     gsap.timeline({ defaults: { ease: "power3.out" } })
-      .to(hero.querySelector(".hero__eyebrow"), { autoAlpha: 1, y: 0, duration: 0.6 }, 0.1)
       .to(words, { autoAlpha: 1, yPercent: 0, rotate: 0, duration: 0.9, stagger: 0.055 }, 0.15)
       .to(art, { autoAlpha: 1, scale: 1, duration: 1.2 }, 0.3)
       .to(hero.querySelectorAll(".hero__sub, .hero__ctas, .trust"), { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.08 }, 0.55);

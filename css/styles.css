@@ -155,7 +155,6 @@ strong { font-weight: 700; }
 @media (min-width: 1024px) { .grid-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 .page-hero { padding-block: var(--space-8) var(--space-7); border-bottom: 1px solid var(--line-soft); }
-.page-hero .eyebrow { margin-bottom: var(--space-4); }
 .page-hero .lede { margin-top: var(--space-5); }
 
 .sr-only {
@@ -925,7 +924,6 @@ body.menu-open { overflow: hidden; }
   padding-block: var(--space-6) var(--space-8);
 }
 .hero__copy { display: grid; gap: var(--space-5); justify-items: start; }
-.hero__eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); }
 .hero__live-dot {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--live);
@@ -981,6 +979,8 @@ body.menu-open { overflow: hidden; }
           mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 70%);
   filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.6));
 }
+/* For a transparent PNG mascot: no edge fade needed */
+.hero__mask--cutout { -webkit-mask-image: none; mask-image: none; }
 
 .stub {
   --tilt: -8deg;
@@ -1107,7 +1107,6 @@ body.menu-open { overflow: hidden; }
 /* ---------- 18. Sections ---------- */
 .section--tight-top { padding-top: 0; }
 .section-head { display: grid; gap: var(--space-3); margin-bottom: var(--space-6); }
-.section-head .eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); }
 .section-title { font-size: var(--fs-h2); }
 .section-head--row { gap: var(--space-5); }
 @media (min-width: 960px) {
@@ -1453,15 +1452,6 @@ body.menu-open { overflow: hidden; }
   border-radius: var(--radius);
   background: linear-gradient(180deg, var(--surface-2), var(--surface));
 }
-.step__num {
-  position: absolute;
-  top: var(--space-4); right: var(--space-5);
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--gold-dark);
-}
 .step__icon { width: 48px; height: 48px; color: var(--gold); margin-bottom: var(--space-2); }
 .step__title { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem); line-height: 1; }
 .step p { color: var(--muted); font-size: var(--fs-sm); line-height: 1.6; }
@@ -1470,7 +1460,6 @@ body.menu-open { overflow: hidden; }
   background: radial-gradient(120% 100% at 0% 0%, rgba(245, 180, 0, 0.12), transparent 60%), var(--surface);
 }
 .step--note .step__title { color: var(--gold-light); }
-.step--note .step__num { font-size: 1.25rem; color: var(--gold); }
 @media (min-width: 640px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
@@ -1531,6 +1520,7 @@ body.menu-open { overflow: hidden; }
   color: var(--gold);
   letter-spacing: 0.04em;
 }
+.winner__photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .winner__body { display: grid; gap: 2px; min-width: 0; }
 .winner__who { font-size: var(--fs-sm); color: var(--muted); }
 .winner__who strong { color: var(--text); margin-right: 0.25em; }
@@ -2011,18 +2001,11 @@ main:has(> .final-cta:last-child) + .site-footer { margin-top: 0; border-top-col
 .iw-table tr.is-won td.mono { color: var(--muted); text-decoration: line-through; }
 .iw-table tr.is-won .iw-status { color: var(--muted); }
 
-.rules { counter-reset: rule; display: grid; gap: var(--space-3); list-style: none; padding: 0; }
+.rules { display: grid; gap: var(--space-3); list-style: none; padding: 0; }
 .rules li {
-  counter-increment: rule;
-  position: relative;
-  padding: var(--space-3) 0 var(--space-3) 3rem;
+  padding: var(--space-3) 0;
   border-bottom: 1px solid var(--line-soft);
   color: var(--muted);
-}
-.rules li::before {
-  content: counter(rule, decimal-leading-zero);
-  position: absolute; left: 0; top: var(--space-3);
-  font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 700; color: var(--gold);
 }
 .tabpanel a { color: var(--gold-light); }
 
@@ -2073,7 +2056,6 @@ body.has-buybar .site-footer { padding-bottom: calc(var(--space-6) + 76px); }
     var(--bg);
 }
 .page-hero h1 { font-size: clamp(3rem, 1.8rem + 5vw, 6.5rem); }
-.page-hero .eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); }
 .section--compact { padding-block: var(--space-6) var(--section); }
 .section-head__aside { max-width: 44ch; }
 .small { font-size: var(--fs-sm); }
@@ -2083,7 +2065,7 @@ body.has-buybar .site-footer { padding-bottom: calc(var(--space-6) + 76px); }
 .split { display: grid; gap: var(--space-6); }
 .split__head { display: grid; gap: var(--space-4); align-content: start; }
 .split__body { display: grid; gap: var(--space-4); align-content: start; }
-.split__body > .eyebrow { margin-bottom: calc(var(--space-2) * -1); }
+
 @media (min-width: 960px) {
   .split { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: var(--space-8); }
   .split__head { position: sticky; top: calc(var(--header-h) + var(--space-6)); }
@@ -2103,16 +2085,8 @@ body.has-buybar .site-footer { padding-bottom: calc(var(--space-6) + 76px); }
   border-radius: 50%;
   background: rgba(245, 180, 0, 0.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5.5 10.5 3 3 6-7' fill='none' stroke='%23F5B400' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
 }
-.checklist--numbered { counter-reset: chk; }
-.checklist--numbered li { counter-increment: chk; padding: var(--space-4) 0 var(--space-4) 3rem; border-bottom: 1px solid var(--line-soft); }
-.checklist--numbered li::before {
-  content: counter(chk, decimal-leading-zero);
-  top: var(--space-4);
-  width: auto; height: auto;
-  border-radius: 0;
-  background: none;
-  font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: 700; color: var(--gold);
-}
+.checklist--rows li { padding: var(--space-4) 0; border-bottom: 1px solid var(--line-soft); }
+.checklist--rows li::before { content: none; }
 .checklist a, .split a, .timeline a { color: var(--gold-light); }
 
 /* ---------- 31. Competitions page ---------- */
@@ -2180,19 +2154,9 @@ body.has-buybar .site-footer { padding-bottom: calc(var(--space-6) + 76px); }
 .timeline { display: grid; list-style: none; padding: 0; max-width: 920px; }
 .timeline__step {
   display: grid;
-  grid-template-columns: 64px 1fr;
   gap: var(--space-4);
   padding-block: var(--space-6);
   border-top: 1px solid var(--line-soft);
-}
-.timeline__num {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  line-height: 0.9;
-  background: var(--gold-metal);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 .timeline__body { display: grid; gap: var(--space-3); }
 .timeline__body h3 { font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem); }
@@ -2205,8 +2169,6 @@ body.has-buybar .site-footer { padding-bottom: calc(var(--space-6) + 76px); }
   background: radial-gradient(120% 100% at 0% 0%, rgba(245, 180, 0, 0.1), transparent 60%);
 }
 .timeline__step--gold h3 { color: var(--gold-light); }
-.timeline__step--gold .timeline__num { font-size: 3rem; padding-left: 0.1em; }
-@media (min-width: 768px) { .timeline__step { grid-template-columns: 140px 1fr; } .timeline__num { font-size: 5rem; } }
 
 .odds-example {
   padding: var(--space-6) var(--space-5);
@@ -2329,13 +2291,12 @@ body.has-buybar .site-footer { padding-bottom: calc(var(--space-6) + 76px); }
   align-self: start;
 }
 .legal__toc-title { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: var(--space-3); }
-.legal__toc ol { display: grid; gap: var(--space-2); padding-left: 1.4em; font-size: var(--fs-sm); color: var(--muted); }
+.legal__toc ol { display: grid; gap: var(--space-2); list-style: none; padding: 0; font-size: var(--fs-sm); color: var(--muted); }
 .legal__toc a { color: var(--text); text-decoration: none; }
 .legal__toc a:hover { color: var(--gold-light); }
 .legal__body { display: grid; gap: var(--space-7); max-width: 760px; }
 .legal__section { display: grid; gap: var(--space-4); scroll-margin-top: calc(var(--header-h) + var(--space-5)); }
-.legal__section h2 { display: flex; align-items: baseline; gap: var(--space-3); font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); }
-.legal__num { font-family: var(--font-mono); font-size: 0.875rem; color: var(--gold); letter-spacing: 0; }
+.legal__section h2 { font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); }
 .legal__section p, .legal__section li { color: var(--muted); }
 .legal__section strong { color: var(--text); }
 .legal__section ul { display: grid; gap: var(--space-2); padding-left: 1.2em; }
