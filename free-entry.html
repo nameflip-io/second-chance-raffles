@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Postal Entry | Second Chance Raffles</title>
+  <meta name="description" content="Enter any Second Chance Raffles competition free by post. Same odds, same draw, no purchase necessary.">
+  <meta name="theme-color" content="#0A0908">
+  <meta property="og:title" content="Free Postal Entry | Second Chance Raffles">
+  <meta property="og:description" content="Enter any Second Chance Raffles competition free by post. Same odds, same draw, no purchase necessary.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Second Chance Raffles">
+  <meta property="og:locale" content="en_GB">
+  <!-- Share image: swap to an absolute URL (https://<domain>/assets/og-image.jpg) once the domain is live -->
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Second Chance Raffles logo: a half gold, half black mask">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="data/competitions.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="free-entry">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared header: injected by js/main.js. Fallback below shows without JS. -->
+  <div data-site-header>
+    <noscript>
+      <div class="nojs-header container">
+        <nav aria-label="Main">
+          <a href="index.html"><strong>Second Chance Raffles</strong></a>
+          <a href="competitions.html">Competitions</a>
+          <a href="winners.html">Winners</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="free-entry.html">Free entry</a>
+          <span class="chip-18">18+</span>
+        </nav>
+      </div>
+    </noscript>
+  </div>
+
+  <main id="main">
+    <section class="page-hero page-hero--glow">
+      <div class="container">
+        <p class="eyebrow">No purchase necessary</p>
+        <h1>Free postal <span class="text-metal">entry</span></h1>
+        <p class="lede">Every competition can be entered for free by post. A postal entry goes into the same draw, with exactly the same odds, as a paid ticket. Here’s how.</p>
+        <p class="focus-note" data-postal-focus hidden></p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="write-title">
+      <div class="container split">
+        <div class="split__body">
+          <p class="eyebrow">Step 1</p>
+          <h2 id="write-title" class="section-title">What to write</h2>
+          <p class="muted">On a postcard, or a sheet of paper in an envelope, write clearly in capitals:</p>
+          <ol class="checklist checklist--numbered" role="list">
+            <li><strong>Your full name</strong></li>
+            <li><strong>Your full postal address</strong>, including postcode</li>
+            <li><strong>Your phone number</strong></li>
+            <li><strong>Your email address</strong></li>
+            <li><strong>The competition name</strong>, exactly as shown on the site</li>
+            <li><strong>Your answer</strong> to that competition’s question</li>
+          </ol>
+          <p class="muted">Missing or unreadable details mean we can’t enter you, so double-check before you post.</p>
+        </div>
+
+        <figure class="postcard">
+          <div class="postcard__stamp" aria-hidden="true">1st</div>
+          <p class="postcard__label">Example entry</p>
+          <dl class="postcard__lines">
+            <div><dt>Name</dt><dd>Alex Morgan</dd></div>
+            <div><dt>Address</dt><dd>12 High Street, Leeds, LS1 4AB</dd></div>
+            <div><dt>Phone</dt><dd>07700 900123</dd></div>
+            <div><dt>Email</dt><dd>alex@example.com</dd></div>
+            <div><dt>Competition</dt><dd>PS5 Pro</dd></div>
+            <div><dt>Answer</dt><dd>6</dd></div>
+          </dl>
+          <figcaption class="sr-only">An example postcard showing name, address, phone, email, competition name and answer.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-labelledby="send-title">
+      <div class="container send-grid">
+        <div>
+          <p class="eyebrow">Step 2</p>
+          <h2 id="send-title" class="section-title">Where to send it</h2>
+          <!-- PLACEHOLDER: client adds the real postal address -->
+          <address class="address-card">
+            <span class="address-card__tag">Postal entries</span>
+            [Company name] Ltd – Free Entry<br>
+            [Address line 1]<br>
+            [Address line 2]<br>
+            [Town / City]<br>
+            [Postcode]
+          </address>
+        </div>
+        <div>
+          <p class="eyebrow">The rules</p>
+          <h2 class="section-title">Keep it valid</h2>
+          <ul class="checklist" role="list">
+            <li><strong>One entry per envelope or postcard.</strong> Several entries in one envelope count as a single entry.</li>
+            <li><strong>First- or second-class post.</strong> We can’t accept hand-delivered, recorded or franked bulk entries.</li>
+            <li><strong>Arrive before entries close.</strong> Your entry must reach us before the closing time shown on the competition. Late entries aren’t entered.</li>
+            <li><strong>Same limit as paid entries.</strong> Postal and paid entries count towards the same per-person limit for each competition.</li>
+            <li><strong>Confirmation.</strong> We’ll email you when your entry is added, usually within [X] working days of it arriving.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-labelledby="odds-same-title">
+      <div class="container">
+        <div class="same-odds">
+          <h2 id="odds-same-title" class="same-odds__title">Same draw.<br><span class="text-metal">Same odds.</span></h2>
+          <p class="lede">A postal entry is treated exactly like a paid ticket. It gets a ticket number, it goes into the same live draw, and if it doesn’t win, it goes into the monthly Second Chance draw too.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight-top" aria-labelledby="open-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">What you can enter now</p>
+          <h2 id="open-title" class="section-title">Open competitions &amp; questions</h2>
+          <p class="muted">Write the competition name and your answer on your entry. Closing times are UK time.</p>
+        </header>
+        <div class="table-wrap" data-render="postal-table">
+          <noscript><p class="noscript-pad">See the <a href="competitions.html">competitions page</a> for every open competition and its question.</p></noscript>
+        </div>
+        <p class="muted small table-foot">Full rules for postal entry are in our <a href="terms.html#postal-entry">terms &amp; conditions</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer: injected by js/main.js -->
+  <div data-site-footer>
+    <noscript>
+      <footer class="container" style="padding-block:2rem">
+        <p><span class="chip-18">18+</span> Over 18s only. <a href="free-entry.html">Free postal entry</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="responsible-play.html">Responsible play</a></p>
+      </footer>
+    </noscript>
+  </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsible Play | Second Chance Raffles</title>
+  <meta name="description" content="Over 18s only. Tools, limits and free support to keep prize competitions fun.">
+  <meta name="theme-color" content="#0A0908">
+  <meta property="og:title" content="Responsible Play | Second Chance Raffles">
+  <meta property="og:description" content="Over 18s only. Tools, limits and free support to keep prize competitions fun.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Second Chance Raffles">
+  <meta property="og:locale" content="en_GB">
+  <!-- Share image: swap to an absolute URL (https://<domain>/assets/og-image.jpg) once the domain is live -->
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Second Chance Raffles logo: a half gold, half black mask">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="data/competitions.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="responsible-play">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared header: injected by js/main.js. Fallback below shows without JS. -->
+  <div data-site-header>
+    <noscript>
+      <div class="nojs-header container">
+        <nav aria-label="Main">
+          <a href="index.html"><strong>Second Chance Raffles</strong></a>
+          <a href="competitions.html">Competitions</a>
+          <a href="winners.html">Winners</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="free-entry.html">Free entry</a>
+          <span class="chip-18">18+</span>
+        </nav>
+      </div>
+    </noscript>
+  </div>
+
+  <main id="main">
+    <div class="template-banner" role="note">
+      <div class="container template-banner__inner">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+        <p><strong>Template - to be reviewed by a legal professional before launch.</strong> Text in [brackets] must be completed by the business.</p>
+      </div>
+    </div>
+
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">18+ only</p>
+        <h1>Responsible play</h1>
+        <p class="lede">Competitions should be fun, not a way to make money. Here are the tools and support to keep it that way.</p>
+        <p class="legal__updated">Last updated: [DD Month YYYY]</p>
+      </div>
+    </section>
+
+    <div class="container legal">
+      <nav class="legal__toc" aria-label="On this page">
+        <p class="legal__toc-title">On this page</p>
+        <ol>
+            <li><a href="#age">18+ only</a></li>
+            <li><a href="#keep-it-fun">Keep it fun</a></li>
+            <li><a href="#spend-limits">Set a spend limit</a></li>
+            <li><a href="#warning-signs">Warning signs</a></li>
+            <li><a href="#take-a-break">Take a break</a></li>
+            <li><a href="#self-exclusion">Self-exclusion</a></li>
+            <li><a href="#support">Free, confidential support</a></li>
+            <li><a href="#parents">For parents and carers</a></li>
+        </ol>
+      </nav>
+      <article class="legal__body">
+          <section class="legal__section" id="age" aria-labelledby="age-h">
+            <h2 id="age-h"><span class="legal__num">01</span>18+ only</h2>
+            <p>You must be 18 or over to enter any Second Chance Raffles competition. We check the age of every winner before awarding a prize, and may check entrants at any time. [Describe age verification process and provider.]</p>
+            <p>If you believe someone under 18 has entered, contact us at <strong>[email address]</strong> and we'll close their account.</p>
+          </section>
+          <section class="legal__section" id="keep-it-fun" aria-labelledby="keep-it-fun-h">
+            <h2 id="keep-it-fun-h"><span class="legal__num">02</span>Keep it fun</h2>
+            <ul>
+              <li>Only spend what you can afford to lose. Treat tickets as entertainment, not a way to make money.</li>
+              <li>Decide on a budget before you play, and stick to it.</li>
+              <li>Never chase losses by buying more tickets.</li>
+              <li>Take regular breaks, and don't play when you're stressed, upset or have been drinking.</li>
+            </ul>
+          </section>
+          <section class="legal__section" id="spend-limits" aria-labelledby="spend-limits-h">
+            <h2 id="spend-limits-h"><span class="legal__num">03</span>Set a spend limit</h2>
+            <p>You can set a daily, weekly or monthly spend limit in <strong>[account settings location]</strong>. Lowering a limit takes effect immediately. Raising one takes effect after <strong>[24 hours / cooling-off period]</strong>.</p>
+            <p>[Describe any other tools: purchase reminders, session time reminders, etc.]</p>
+          </section>
+          <section class="legal__section" id="warning-signs" aria-labelledby="warning-signs-h">
+            <h2 id="warning-signs-h"><span class="legal__num">04</span>Warning signs</h2>
+            <p>It may be time to take a break if you:</p>
+            <ul>
+              <li>spend more than you planned, or more than you can afford;</li>
+              <li>borrow money or miss bills to buy tickets;</li>
+              <li>feel anxious, guilty or irritable about how much you spend;</li>
+              <li>hide your spending from friends or family.</li>
+            </ul>
+          </section>
+          <section class="legal__section" id="take-a-break" aria-labelledby="take-a-break-h">
+            <h2 id="take-a-break-h"><span class="legal__num">05</span>Take a break</h2>
+            <p>You can pause your account for <strong>[24 hours / 7 days / 30 days]</strong>. During a break you can't buy tickets, and we won't send you marketing. [Describe how to request a break.]</p>
+          </section>
+          <section class="legal__section" id="self-exclusion" aria-labelledby="self-exclusion-h">
+            <h2 id="self-exclusion-h"><span class="legal__num">06</span>Self-exclusion</h2>
+            <p>If you want to stop for longer, you can self-exclude for <strong>[6 months / 1 year / 5 years]</strong>. While self-excluded you can't enter competitions and we'll remove you from all marketing. Self-exclusion can't be reversed before the period ends.</p>
+            <p>To self-exclude, contact us at <strong>[self-exclusion email]</strong> or call <strong>[phone number]</strong>, [opening hours].</p>
+          </section>
+          <section class="legal__section" id="support" aria-labelledby="support-h">
+            <h2 id="support-h"><span class="legal__num">07</span>Free, confidential support</h2>
+            <p>If you're worried about your own or someone else's spending, these organisations offer free, confidential help:</p>
+            <ul class="support-list" role="list">
+              <li><strong>GamCare</strong><span>Support, information and counselling. [Website link] · [Helpline number]</span></li>
+              <li><strong>BeGambleAware</strong><span>Advice and links to free treatment. [Website link]</span></li>
+              <li><strong>[Additional support service]</strong><span>[Description] · [Website link] · [Phone number]</span></li>
+            </ul>
+            <!-- Replace the bracketed links with the services' current official URLs and numbers -->
+          </section>
+          <section class="legal__section" id="parents" aria-labelledby="parents-h">
+            <h2 id="parents-h"><span class="legal__num">08</span>For parents and carers</h2>
+            <p>Our services are strictly for adults. Filtering software such as [examples] can help stop under-18s accessing sites like ours. [Further guidance.]</p>
+          </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- Shared footer: injected by js/main.js -->
+  <div data-site-footer>
+    <noscript>
+      <footer class="container" style="padding-block:2rem">
+        <p><span class="chip-18">18+</span> Over 18s only. <a href="free-entry.html">Free postal entry</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="responsible-play.html">Responsible play</a></p>
+      </footer>
+    </noscript>
+  </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Styleguide | Second Chance Raffles</title>
+  <meta name="description" content="Internal component reference.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0908">
+  <meta property="og:title" content="Styleguide | Second Chance Raffles">
+  <meta property="og:description" content="Internal component reference.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Second Chance Raffles">
+  <meta property="og:locale" content="en_GB">
+  <!-- Share image: swap to an absolute URL (https://<domain>/assets/og-image.jpg) once the domain is live -->
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Second Chance Raffles logo: a half gold, half black mask">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="data/competitions.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body data-page="styleguide">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared header: injected by js/main.js. Fallback below shows without JS. -->
+  <div data-site-header>
+    <noscript>
+      <div class="nojs-header container">
+        <nav aria-label="Main">
+          <a href="index.html"><strong>Second Chance Raffles</strong></a>
+          <a href="competitions.html">Competitions</a>
+          <a href="winners.html">Winners</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="free-entry.html">Free entry</a>
+          <span class="chip-18">18+</span>
+        </nav>
+      </div>
+    </noscript>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Foundation · internal</p>
+        <h1>Styleguide</h1>
+        <p class="lede">Tokens, components and ticket cards in one place. Not linked from the site — delete before launch.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="sg-block">
+          <h2>Colour</h2>
+          <div class="sg-row">
+            <div class="sg-swatch"><i style="background:var(--bg)"></i>--bg #0A0908</div>
+            <div class="sg-swatch"><i style="background:var(--surface)"></i>--surface #15130F</div>
+            <div class="sg-swatch"><i style="background:var(--surface-2)"></i>--surface-2 #1E1B15</div>
+            <div class="sg-swatch"><i style="background:var(--gold)"></i>--gold #F5B400</div>
+            <div class="sg-swatch"><i style="background:var(--gold-light)"></i>--gold-light #FFD75A</div>
+            <div class="sg-swatch"><i style="background:var(--gold-dark)"></i>--gold-dark #C98A00</div>
+            <div class="sg-swatch"><i style="background:var(--text)"></i>--text #F4EEDF</div>
+            <div class="sg-swatch"><i style="background:var(--muted)"></i>--muted #A39B87</div>
+            <div class="sg-swatch"><i style="background:var(--live)"></i>--live #2FD17A</div>
+          </div>
+        </div>
+
+        <div class="sg-block stack" style="--stack:var(--space-5)">
+          <h2>Type</h2>
+          <p class="display">Win the <span class="text-metal">Golf R</span></p>
+          <h1>Heading one</h1>
+          <h2>Heading two</h2>
+          <h3>Heading three</h3>
+          <p class="lede">Lede — low-cost tickets, capped entries, real odds.</p>
+          <p>Body copy in Manrope. Every losing ticket goes into our monthly Second Chance draw, so a near miss is never the end of the road.</p>
+          <p class="mono">SCR-0042 · 03d 04h 12m 09s · £0.79 · Odds 1 in 1,999</p>
+        </div>
+
+        <div class="sg-block">
+          <h2>Buttons</h2>
+          <div class="sg-row">
+            <a class="btn btn--gold btn--lg" href="competitions.html">Enter now</a>
+            <a class="btn btn--gold" href="competitions.html">Enter now</a>
+            <a class="btn btn--outline" href="free-entry.html">Free postal entry</a>
+            <a class="btn btn--ghost" href="how-it-works.html">How it works</a>
+            <a class="btn btn--gold btn--sm" href="competitions.html">Small</a>
+            <button class="btn btn--gold" type="button" data-checkout>Open checkout modal</button>
+          </div>
+        </div>
+
+        <div class="sg-block">
+          <h2>Badges</h2>
+          <div class="sg-row">
+            <span class="badge badge--live">Live</span>
+            <span class="badge badge--ending">Ending soon</span>
+            <span class="badge badge--instant">Instant wins</span>
+            <span class="badge badge--almost">Almost gone</span>
+            <span class="badge badge--popular">Most popular</span>
+            <span class="badge badge--category">Tech</span>
+            <span class="chip-18">18+</span>
+          </div>
+        </div>
+
+        <div class="sg-block" style="max-width:480px">
+          <h2>Progress</h2>
+          <div class="progress" role="progressbar" aria-label="Tickets sold" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><div class="progress__bar" style="--value:70%"></div></div>
+          <p class="progress-meta"><span><strong>1,412</strong> / 1,999 sold</span><span>70%</span></p>
+        </div>
+
+        <div class="sg-block sg-form">
+          <h2>Form controls</h2>
+          <form onsubmit="return false">
+            <div class="field">
+              <label class="label" for="sg-name">Full name</label>
+              <input class="input" id="sg-name" type="text" autocomplete="name" placeholder="Alex Morgan">
+            </div>
+            <div class="field">
+              <label class="label" for="sg-email">Email</label>
+              <input class="input" id="sg-email" type="email" autocomplete="email" aria-invalid="true" aria-describedby="sg-email-err" value="alex@">
+              <p class="error-text" id="sg-email-err">Enter a full email address, like name@example.com</p>
+            </div>
+            <div class="field">
+              <label class="label" for="sg-comp">Competition</label>
+              <select class="select" id="sg-comp">
+                <option>VW Golf R</option>
+                <option>PS5 Pro</option>
+                <option>£5,000 Tax-Free Cash</option>
+              </select>
+            </div>
+            <div class="field">
+              <span class="label" id="sg-qty-label">Tickets</span>
+              <div class="qty" role="group" aria-labelledby="sg-qty-label">
+                <button type="button" aria-label="Fewer tickets">−</button>
+                <input type="number" value="5" min="1" max="100" inputmode="numeric" aria-label="Number of tickets">
+                <button type="button" aria-label="More tickets">+</button>
+              </div>
+              <p class="hint">Max 100 tickets per person.</p>
+            </div>
+            <div class="field">
+              <label class="label" for="sg-msg">Message</label>
+              <textarea class="textarea" id="sg-msg" placeholder="Anything we should know?"></textarea>
+            </div>
+            <div class="field">
+              <label class="check"><input type="checkbox" checked> I'm 18 or over and a UK resident</label>
+              <label class="check"><input type="radio" name="sg-r" checked> Take the prize</label>
+              <label class="check"><input type="radio" name="sg-r"> Take the cash alternative</label>
+            </div>
+          </form>
+        </div>
+
+        <div class="sg-block">
+          <h2>Ticket cards</h2>
+          <div class="grid-cards" data-render="ticket-cards"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer: injected by js/main.js -->
+  <div data-site-footer>
+    <noscript>
+      <footer class="container" style="padding-block:2rem">
+        <p><span class="chip-18">18+</span> Over 18s only. <a href="free-entry.html">Free postal entry</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="responsible-play.html">Responsible play</a></p>
+      </footer>
+    </noscript>
+  </div>
+</body>
+</html>

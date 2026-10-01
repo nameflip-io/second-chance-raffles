@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Competition | Second Chance Raffles</title>
+  <meta name="description" content="Prize details, ticket price, odds and live countdown. Enter online or free by post.">
+  <meta name="theme-color" content="#0A0908">
+  <meta property="og:title" content="Competition | Second Chance Raffles">
+  <meta property="og:description" content="Prize details, ticket price, odds and live countdown. Enter online or free by post.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Second Chance Raffles">
+  <meta property="og:locale" content="en_GB">
+  <!-- Share image: swap to an absolute URL (https://<domain>/assets/og-image.jpg) once the domain is live -->
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Second Chance Raffles logo: a half gold, half black mask">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
+  <script src="data/competitions.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/competition.js" defer></script>
+</head>
+<body data-page="competition">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared header: injected by js/main.js. Fallback below shows without JS. -->
+  <div data-site-header>
+    <noscript>
+      <div class="nojs-header container">
+        <nav aria-label="Main">
+          <a href="index.html"><strong>Second Chance Raffles</strong></a>
+          <a href="competitions.html">Competitions</a>
+          <a href="winners.html">Winners</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="free-entry.html">Free entry</a>
+          <span class="chip-18">18+</span>
+        </nav>
+      </div>
+    </noscript>
+  </div>
+
+  <main id="main">
+    <div class="container comp-page" data-render="competition">
+      <noscript>
+        <h1>Competition</h1>
+        <p>This page needs JavaScript to show prize details. Browse every live prize on the <a href="competitions.html">competitions page</a>, or <a href="free-entry.html">enter any competition free by post</a>.</p>
+      </noscript>
+    </div>
+  </main>
+
+  <!-- Shared footer: injected by js/main.js -->
+  <div data-site-footer>
+    <noscript>
+      <footer class="container" style="padding-block:2rem">
+        <p><span class="chip-18">18+</span> Over 18s only. <a href="free-entry.html">Free postal entry</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="responsible-play.html">Responsible play</a></p>
+      </footer>
+    </noscript>
+  </div>
+</body>
+</html>
