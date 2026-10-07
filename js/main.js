@@ -578,7 +578,7 @@
       var list = rows.map(function (it) {
         var c = mcComps[it.id], line = c.price * it.qty;
         total += line;
-        var img = it.image || c.image || "";
+        var img = c.image || it.image || ""; // current data first: older saved baskets may hold old file paths
         return '<li class="mini-cart__item">' +
           (img ? '<img class="mini-cart__img" src="' + mcEsc(img) + '" alt="" width="48" height="48">'
                : '<span class="mini-cart__img" aria-hidden="true"></span>') +

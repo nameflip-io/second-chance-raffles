@@ -24,7 +24,7 @@ window.SCR_COMPETITIONS = [
         "10"
       ]
     },
-    "image": "assets/urus.png"
+    "image": "assets/urus.webp"
   },
   {
     "id": 2,
@@ -184,7 +184,7 @@ window.SCR_COMPETITIONS = [
         "10"
       ]
     },
-    "image": "assets/iphone%2018%20pro%20max.png"
+    "image": "assets/iphone%2018%20pro%20max.webp"
   },
   {
     "id": 10,
@@ -264,7 +264,7 @@ window.SCR_COMPETITIONS = [
         "10"
       ]
     },
-    "image": "assets/cash.png"
+    "image": "assets/cash.webp"
   },
   {
     "id": 14,
@@ -284,7 +284,7 @@ window.SCR_COMPETITIONS = [
         "10"
       ]
     },
-    "image": "assets/cash.png"
+    "image": "assets/cash.webp"
   },
   {
     "id": 15,
@@ -304,7 +304,7 @@ window.SCR_COMPETITIONS = [
         "10"
       ]
     },
-    "image": "assets/cash.png"
+    "image": "assets/cash.webp"
   },
   {
     "id": 16,
@@ -324,7 +324,7 @@ window.SCR_COMPETITIONS = [
         "10"
       ]
     },
-    "image": "assets/cash.png"
+    "image": "assets/cash.webp"
   },
   {
     "id": 17,
